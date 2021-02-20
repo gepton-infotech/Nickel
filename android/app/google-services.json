@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "494253229078",
+    "project_id": "pyfin-48d4f",
+    "storage_bucket": "pyfin-48d4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494253229078:android:3eb10ea755dab3313d6137",
+        "android_client_info": {
+          "package_name": "com.example.pyfin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494253229078-shkr8l9petr9n5i4eevobgsl8tl9umif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pyfin",
+            "certificate_hash": "e122952b9ab8ab27d905ea5b432c00b3b28d9cdd"
+          }
+        },
+        {
+          "client_id": "494253229078-fqaia6d3brc90u6paikpcgb1tck269r0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR3098nZyvxNCW8s808dgjZ73Q8mUric4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494253229078-fqaia6d3brc90u6paikpcgb1tck269r0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
