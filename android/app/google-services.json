@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494253229078:android:3eb10ea755dab3313d6137",
+        "mobilesdk_app_id": "1:494253229078:android:587b9fc8de2af5c83d6137",
         "android_client_info": {
-          "package_name": "com.example.pyfin"
+          "package_name": "com.gepton.pyfin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "494253229078-shkr8l9petr9n5i4eevobgsl8tl9umif.apps.googleusercontent.com",
+          "client_id": "494253229078-9uoti2u13kino26cpq9hc1c9oi93q5hr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.pyfin",
+            "package_name": "com.gepton.pyfin",
             "certificate_hash": "e122952b9ab8ab27d905ea5b432c00b3b28d9cdd"
           }
         },

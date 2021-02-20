@@ -1,4 +1,4 @@
-package com.example.pyfin
+package com.gepton.pyfin
 
 import io.flutter.embedding.android.FlutterActivity
 
