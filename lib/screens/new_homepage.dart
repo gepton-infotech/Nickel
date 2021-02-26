@@ -210,8 +210,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 } else {
                                   return Container(
                                     //color: Colors.blue,
-                                    height: 250,
+                                    height: MediaQuery.of(context).size.height,
                                     child: GridView.builder(
+                                        primary: false,
                                         itemCount:
                                             snapshot.data['enrolled'].length,
                                         gridDelegate:
@@ -240,96 +241,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               ],
-            ),
-            Container(
-              height: 600,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 20, top: 40, right: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("Courses We Offer", style: kTitleTextStyle),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => CoursesScreen()),
-                                );
-                              },
-                              child: Text(
-                                "See All",
-                                style: kSubtitleTextSyule.copyWith(
-                                    color: kBlueColor),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 30),
-                        StreamBuilder(
-                            stream: courseStream,
-                            builder: (context, snapshot) {
-                              if (snapshot.data == null) {
-                                return Container(
-                                  child: Center(
-                                      child: CircularProgressIndicator()),
-                                );
-                              }
-                              return Expanded(
-                                child: StaggeredGridView.countBuilder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  padding: EdgeInsets.all(0),
-                                  crossAxisCount: 2,
-                                  itemCount: courses.length <= 4
-                                      ? courses.length
-                                      : categories.length,
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 20,
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                      padding: EdgeInsets.all(20),
-                                      height: index.isEven ? 200 : 240,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              categories[index].image),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            snapshot.data.documents[index]
-                                                .data['courseName'],
-                                            style: kSubtitleTextSyule,
-                                          ),
-                                          // Text(
-                                          //   '${categories[index].numOfCourses} Courses',
-                                          //   style: TextStyle(
-                                          //     color: kTextColor.withOpacity(.5),
-                                          //   ),
-                                          //)
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  staggeredTileBuilder: (index) =>
-                                      StaggeredTile.fit(1),
-                                ),
-                              );
-                            }),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),
