@@ -13,6 +13,7 @@ class Contact {
   List<String> _enrolled;
   List<String> _completedTopics;
   String _deviceToken;
+  List<dynamic> _courseExamDate;
 
   //constructors
 
@@ -26,7 +27,8 @@ class Contact {
       this._courses,
       this._enrolled,
       this._completedTopics,
-      this._deviceToken);
+      this._deviceToken,
+      this._courseExamDate);
   Contact.withID(this._id, this._firstName, this._lastName, this._email,
       this._photoUrl, this._phone);
   Contact.withEnroll(this._enrolled);
@@ -43,6 +45,7 @@ class Contact {
   List get courses => this._courses;
   List<String> get enrolled => this._enrolled;
   List<String> get completedTopics => this._completedTopics;
+  List<dynamic> get courseExamDate => this._courseExamDate;
 
   //setters
   set firstName(String firstname) {
@@ -73,6 +76,7 @@ class Contact {
     this._photoCover = snapshot['photoCover'];
     this._phone = snapshot['phone'];
     this._courses = snapshot['courses'];
+    this._courseExamDate = snapshot['courseExamDate'];
   }
 
   Map<String, dynamic> toJson() {
@@ -86,6 +90,7 @@ class Contact {
       "enrolled": _enrolled,
       "completedTopics": _completedTopics,
       "AppdeviceToken": _deviceToken,
+      "courseExamDate": _courseExamDate,
     };
   }
 }

@@ -37,15 +37,56 @@ class _AddInfoState extends State<AddInfo> {
   String _photoUrl = '';
   String _phone = '';
   String _photoCover = '';
+  List<Map<dynamic, dynamic>> _courseExamDate = List<Map>();
   bool yesORno = false;
 
   bool isloading = true;
   bool emailValid = true;
-  List<dynamic> demo = ['upsc', 'neet', 'jee'];
+  // List<dynamic> demo = ['upsc', 'neet', 'jee'];
   // bool pressed = true;
 
   List _courses;
   Stream blogsStream;
+  var ans = 0;
+
+  List _dates = List.generate(20, (i) => DateTime.now());
+  DateTime selectedDate = DateTime.now();
+  List<dynamic> _examDate;
+  //var examdate = <Map>[];
+
+  selectDate(BuildContext context, index, exam) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: _dates[index],
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        ans = 0;
+        var map = {};
+        //print(picked.toString().split(' ')[0]);
+        print(index);
+        _dates[index] = picked;
+        map["exam"] = exam;
+        map["date"] = _dates[index].toString().split(' ')[0];
+        print(map);
+        for (var x in _courseExamDate) {
+          // print("in");
+          if (x.containsKey("exam")) {
+            print("in");
+            if (x["exam"] == exam) {
+              _courseExamDate[index] = map;
+              ans = 1;
+            }
+          }
+        }
+        if (ans == 0) _courseExamDate.add(map);
+        //else
+
+        print(_courseExamDate);
+      });
+  }
 
   //checking if user is already there
   TextEditingController _fnController = TextEditingController();
@@ -72,6 +113,17 @@ class _AddInfoState extends State<AddInfo> {
           _photoCover = contact.photoCover;
           _phone = contact.phone;
           _courses = contact.courses;
+          _examDate = contact.courseExamDate;
+          print(_examDate);
+
+          var i = 0;
+          for (var x in _examDate) {
+            _dates[i] = x["date"];
+            i++;
+            //print(x);
+          }
+
+          //_courseExamDate = contact.courseExamDate;
           isloading = false;
           print(_courses);
         });
@@ -133,8 +185,18 @@ class _AddInfoState extends State<AddInfo> {
     });
     if (_firstName.isNotEmpty && _lastName.isNotEmpty && _email.isNotEmpty) {
       if (EmailValidator.validate(_email)) {
-        Contact contact = Contact(this._firstName, this._lastName, this._email,
-            photourl, photocover, this._phone, this._courses, [], [], '');
+        Contact contact = Contact(
+            this._firstName,
+            this._lastName,
+            this._email,
+            photourl,
+            photocover,
+            this._phone,
+            this._courses,
+            [],
+            [],
+            '',
+            this._courseExamDate);
         addStringToSF();
         crudmethods
             .addpymaths(contact.toJson(), _phone.replaceAll(' ', ''))
@@ -235,11 +297,6 @@ class _AddInfoState extends State<AddInfo> {
                           setState(() {
                             _photoUrl = photourl;
                           });
-                          // Navigator.pop(context);
-                          // Navigator.of(context).push(
-                          //   MaterialPageRoute(
-                          //       builder: (context) => AddInfo(widget._nphone)),
-                          // );
                         }, // potention error
                         child: Center(
                           child: Container(
@@ -326,9 +383,66 @@ class _AddInfoState extends State<AddInfo> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: multiselectformfield(),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+
+                    _courses.length > 0
+                        ? Container(
+                            margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                            child: Wrap(
+                              spacing: 10.0,
+                              runSpacing: 5.0,
+                              children: [
+                                GridView.builder(
+                                    itemCount: _courses.length,
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            //childAspectRatio: 0.1,
+                                            //crossAxisSpacing: 20,
+                                            mainAxisSpacing: 20),
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          Text(
+                                            "${_dates[index]}".split(' ')[0],
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          RaisedButton(
+                                            onPressed: () => selectDate(context,
+                                                index, _courses[index]),
+                                            shape: const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(14))),
+                                            child: Text(
+                                              _courses[index] +
+                                                  ' ' +
+                                                  'EXAM DATE',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            color: kBlueColor,
+                                          ),
+                                        ],
+                                      );
+                                    }),
+                              ],
+                            ),
+                          )
+                        : SizedBox(
+                            height: 0,
+                            width: 0,
+                          ),
 
                     SizedBox(
-                      height: 30,
+                      height: 10,
                     ),
                     //save
                     Container(
@@ -411,20 +525,6 @@ class _AddInfoState extends State<AddInfo> {
                 //}
               }
           ],
-          // dataSource: [
-          //   {
-          //     'display': "Running",
-          //     "value": "Running",
-          //   },
-          //   {
-          //     'display': "Climbing",
-          //     "value": "Climbing",
-          //   },
-          //   {
-          //     'display': "Walking",
-          //     'value': "Walking",
-          //   },
-          // ],
           textField: 'display',
           valueField: 'value',
           okButtonLabel: 'OK',
@@ -436,7 +536,8 @@ class _AddInfoState extends State<AddInfo> {
             setState(() {
               _courses = value;
               courses = value;
-              //print(_courses);
+              print(_courses);
+              print(courses.length);
               print(courses);
             });
           },
