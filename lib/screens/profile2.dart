@@ -34,15 +34,56 @@ class MapScreenState extends State<ProfilePage>
   bool _isloading = false;
   bool isloading = true;
   bool emailValid = true;
+  List<Map<dynamic, dynamic>> _courseExamDate = List<Map>();
   List _courses = List<String>();
   pymaths crudmethods = new pymaths();
   Stream infostream;
+  var ans = 0;
 
   TextEditingController _fnController = TextEditingController();
   TextEditingController _lnController = TextEditingController();
   TextEditingController _eController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _courseController = TextEditingController();
+
+  List _dates = List.generate(20, (i) => DateTime.now());
+  DateTime selectedDate = DateTime.now();
+  List<dynamic> _examDate;
+  //var examdate = <Map>[];
+
+  selectDate(BuildContext context, index, exam) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: _dates[index],
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        ans = 0;
+        var map = {};
+        //print(picked.toString().split(' ')[0]);
+        print(index);
+        _dates[index] = picked;
+        map["exam"] = exam;
+        map["date"] = _dates[index].toString().split(' ')[0];
+        print(map);
+        for (var x in _courseExamDate) {
+          // print("in");
+          if (x.containsKey("exam")) {
+            print("in");
+            if (x["exam"] == exam) {
+              _courseExamDate[index] = map;
+              ans = 1;
+            }
+          }
+        }
+        if (ans == 0) _courseExamDate.add(map);
+        //else
+
+        print(_courseExamDate);
+      });
+  }
 
   void showToast(message, Color color) {
     //print(message);
@@ -73,6 +114,14 @@ class MapScreenState extends State<ProfilePage>
         _phone = contact.phone;
         _courses = contact.courses;
         isloading = false;
+        _examDate = contact.courseExamDate;
+        var i = 0;
+        for (var x in _examDate) {
+          var s = x["date"];
+          _dates[i] = DateTime.parse(s);
+          i++;
+          //print(x);
+        }
         print(_courses);
       });
     });
@@ -114,6 +163,7 @@ class MapScreenState extends State<ProfilePage>
 
   updateProfile(_phone) {
     //print(photourl);
+    print("in");
     setState(() {
       courses = _courses;
     });
@@ -131,6 +181,7 @@ class MapScreenState extends State<ProfilePage>
           "photoUrl": photourl,
           "photoCover": photocover,
           "courses": this._courses,
+          "courseExamDate": this._courseExamDate,
         }).then(
           (value) => showToast("Values are updated", kBlueColor),
         );
@@ -571,6 +622,73 @@ class MapScreenState extends State<ProfilePage>
                                       },
                                     ),
                                   ),
+                                  _courses.length > 0
+                                      ? Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              20, 20, 20, 0),
+                                          child: Wrap(
+                                            spacing: 10.0,
+                                            runSpacing: 5.0,
+                                            children: [
+                                              GridView.builder(
+                                                  itemCount: _courses.length,
+                                                  shrinkWrap: true,
+                                                  gridDelegate:
+                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 2,
+                                                          //childAspectRatio: 0.1,
+                                                          //crossAxisSpacing: 20,
+                                                          mainAxisSpacing: 20),
+                                                  physics:
+                                                      NeverScrollableScrollPhysics(),
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          "${_dates[index]}"
+                                                              .split(' ')[0],
+                                                          style: TextStyle(
+                                                              fontSize: 18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                        RaisedButton(
+                                                          onPressed: () =>
+                                                              selectDate(
+                                                                  context,
+                                                                  index,
+                                                                  _courses[
+                                                                      index]),
+                                                          shape: const RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          14))),
+                                                          child: Text(
+                                                            _courses[index] +
+                                                                ' ' +
+                                                                'EXAM DATE',
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                          color: kBlueColor,
+                                                        ),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ],
+                                          ),
+                                        )
+                                      : SizedBox(
+                                          height: 0,
+                                          width: 0,
+                                        ),
                                   !_status
                                       ? _getActionButtons()
                                       : new Container(),
@@ -595,7 +713,7 @@ class MapScreenState extends State<ProfilePage>
 
   Widget _getActionButtons() {
     return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 0),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: RaisedButton(

@@ -118,7 +118,8 @@ class _AddInfoState extends State<AddInfo> {
 
           var i = 0;
           for (var x in _examDate) {
-            _dates[i] = x["date"];
+            var s = x["date"];
+            _dates[i] = DateTime.parse(s);
             i++;
             //print(x);
           }
