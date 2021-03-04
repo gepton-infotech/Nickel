@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:international_phone_input/international_phone_input.dart';
 
 class Contact {
   String _id;
@@ -14,6 +15,7 @@ class Contact {
   List<String> _completedTopics;
   String _deviceToken;
   List<dynamic> _courseExamDate;
+  String _country;
 
   //constructors
 
@@ -28,7 +30,8 @@ class Contact {
       this._enrolled,
       this._completedTopics,
       this._deviceToken,
-      this._courseExamDate);
+      this._courseExamDate,
+      this._country);
   Contact.withID(this._id, this._firstName, this._lastName, this._email,
       this._photoUrl, this._phone);
   Contact.withEnroll(this._enrolled);
@@ -46,6 +49,7 @@ class Contact {
   List<String> get enrolled => this._enrolled;
   List<String> get completedTopics => this._completedTopics;
   List<dynamic> get courseExamDate => this._courseExamDate;
+  String get country => this._country;
 
   //setters
   set firstName(String firstname) {
@@ -77,6 +81,7 @@ class Contact {
     this._phone = snapshot['phone'];
     this._courses = snapshot['courses'];
     this._courseExamDate = snapshot['courseExamDate'];
+    this._country = snapshot['country'];
   }
 
   Map<String, dynamic> toJson() {
@@ -91,6 +96,7 @@ class Contact {
       "completedTopics": _completedTopics,
       "AppdeviceToken": _deviceToken,
       "courseExamDate": _courseExamDate,
+      "country": _country,
     };
   }
 }

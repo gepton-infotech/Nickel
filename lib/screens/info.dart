@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
@@ -37,6 +38,7 @@ class _AddInfoState extends State<AddInfo> {
   String _photoUrl = '';
   String _phone = '';
   String _photoCover = '';
+  String _country = 'India';
   List<Map<dynamic, dynamic>> _courseExamDate = List<Map>();
   bool yesORno = false;
 
@@ -114,6 +116,7 @@ class _AddInfoState extends State<AddInfo> {
           _phone = contact.phone;
           _courses = contact.courses;
           _examDate = contact.courseExamDate;
+          //_country = contact.country;
           print(_examDate);
 
           var i = 0;
@@ -197,7 +200,8 @@ class _AddInfoState extends State<AddInfo> {
             [],
             [],
             '',
-            this._courseExamDate);
+            this._courseExamDate,
+            this._country);
         addStringToSF();
         crudmethods
             .addpymaths(contact.toJson(), _phone.replaceAll(' ', ''))
@@ -380,6 +384,38 @@ class _AddInfoState extends State<AddInfo> {
                     SizedBox(
                       height: 10,
                     ),
+
+                    //country
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                      child: Row(
+                        children: [
+                          CountryListPick(
+                            appBar: AppBar(
+                              backgroundColor: kBlueColor,
+                              title: Text('Choose your country'),
+                            ),
+                            theme: CountryTheme(
+                              isShowFlag: true,
+                              isShowTitle: true,
+                              //isShowCode: true,
+                              isDownIcon: true,
+                              showEnglishName: true,
+                            ),
+                            initialSelection: '+91',
+                            onChanged: (CountryCode code) {
+                              print(code.name);
+                              setState(() {
+                                _country = code.name;
+                              });
+                              //print(code.code);
+                              //print(code.dialCode);
+                              //print(code.flagUri);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: multiselectformfield(),
@@ -390,6 +426,7 @@ class _AddInfoState extends State<AddInfo> {
 
                     _courses.length > 0
                         ? Container(
+                            // color: Colors.black,
                             margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
                             child: Wrap(
                               spacing: 10.0,
@@ -443,7 +480,7 @@ class _AddInfoState extends State<AddInfo> {
                           ),
 
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     //save
                     Container(
@@ -531,7 +568,7 @@ class _AddInfoState extends State<AddInfo> {
           okButtonLabel: 'OK',
           cancelButtonLabel: 'CANCEL',
           hintWidget: Text('Please choose one or more'),
-          initialValue: _courses,
+          //initialValue: _courses,
           onSaved: (value) {
             if (value == null) return;
             setState(() {
