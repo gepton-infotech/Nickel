@@ -424,7 +424,7 @@ class _AddInfoState extends State<AddInfo> {
                       height: 10,
                     ),
 
-                    _courses.length > 0
+                    (_courses != null)
                         ? Container(
                             // color: Colors.black,
                             margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -568,15 +568,15 @@ class _AddInfoState extends State<AddInfo> {
           okButtonLabel: 'OK',
           cancelButtonLabel: 'CANCEL',
           hintWidget: Text('Please choose one or more'),
-          //initialValue: _courses,
+          initialValue: _courses,
           onSaved: (value) {
             if (value == null) return;
             setState(() {
               _courses = value;
               courses = value;
-              print(_courses);
-              print(courses.length);
-              print(courses);
+              //print(_courses);
+              //print(courses.length);
+              //print(courses);
             });
           },
         );
