@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pyfin/main.dart';
-import 'package:pyfin/model/profile.dart';
 import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/screens/profile2.dart';
