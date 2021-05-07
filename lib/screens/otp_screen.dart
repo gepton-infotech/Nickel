@@ -4,8 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pyfin/global.dart';
-import 'package:pyfin/screens/home_screen.dart';
-import 'package:pyfin/screens/new_homepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';

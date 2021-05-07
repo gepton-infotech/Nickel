@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/services/crud.dart';
-import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';

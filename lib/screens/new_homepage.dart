@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pyfin/global.dart';
-import 'package:pyfin/model/category.dart';
-import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/screens/notification_screen.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:pyfin/widgets/category_card.dart';

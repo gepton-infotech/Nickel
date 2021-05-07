@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:international_phone_input/international_phone_input.dart';
 
 class Contact {
   String _id;

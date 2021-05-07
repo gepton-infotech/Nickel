@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/model/chapters.dart';
-import 'package:pyfin/model/courses.dart';
 import 'package:pyfin/screens/content_heading.dart';
 import 'package:pyfin/services/crud.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 import '../global.dart';

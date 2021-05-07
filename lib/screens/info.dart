@@ -2,24 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:pyfin/constants.dart';
-import 'package:pyfin/main.dart';
 import 'package:pyfin/screens/choose_avatar.dart';
 import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:pyfin/services/push_notification.dart';
-import 'package:random_string/random_string.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../global.dart';
 import '../model/profile.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:path/path.dart' as path;
 
 class AddInfo extends StatefulWidget {
   final String _nphone;

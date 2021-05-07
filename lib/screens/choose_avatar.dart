@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pyfin/global.dart';
-import 'package:pyfin/model/category.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

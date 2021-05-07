@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:pyfin/global.dart';
 
@@ -59,8 +57,7 @@ class CategoryCard extends StatelessWidget {
                   LinearPercentIndicator(
                     width: 110.0,
                     lineHeight: 14.0,
-                    percent:
-                        (double.parse(percentage[map[name[index]]]) / 100),
+                    percent: (double.parse(percentage[map[name[index]]]) / 100),
                     backgroundColor: Colors.grey,
                     progressColor: Colors.blue,
                   ),

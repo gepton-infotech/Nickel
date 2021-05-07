@@ -1,13 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hive/hive.dart';
 import 'package:pyfin/model/profile.dart';
-import 'package:pyfin/widgets/course_card.dart';
 import 'package:pyfin/widgets/horizontal_view.dart';
 import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pyfin/model/chapters.dart';
-import 'package:pyfin/model/courses.dart';
 import 'package:pyfin/model/topic.dart';
 
 import 'package:pyfin/screens/content_screen.dart';

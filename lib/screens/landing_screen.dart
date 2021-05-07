@@ -1,9 +1,5 @@
-import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:pyfin/main.dart';
-import 'package:pyfin/model/courses.dart';
 import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/services/push_notification.dart';
 
@@ -70,7 +66,7 @@ class _LandingScreenState extends State<LandingScreen> {
       }
       if (name4 != null) {
         courses = name4;
-       // print(courses);
+        // print(courses);
       }
 
       //  print('Name: $name');
