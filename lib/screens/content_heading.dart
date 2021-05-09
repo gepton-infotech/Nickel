@@ -53,9 +53,7 @@ class _ContentHeadingState extends State<ContentHeading> {
   // }
 
   void initState() {
-    // TODO: implement initState
     super.initState();
-    //print(widget._subContent);
     print("sub content.....!!!");
 
     for (int i = 0; i < widget._subContent.length; i++) {

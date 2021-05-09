@@ -16,7 +16,6 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
   Stream avastream;
 
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     crudmethods.getAvatar().then((result) {

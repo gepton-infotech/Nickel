@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:pyfin/screens/splash_page.dart';
 
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:pyfin/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   box = await Hive.openBox('testBox');
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,9 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pyfin',
-      theme: ThemeData(
-          //  primarySwatch: Colors.purple,
-          ),
+      theme: appTheme(),
       home: SplashPage(),
     );
   }

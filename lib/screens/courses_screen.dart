@@ -83,33 +83,24 @@ class _CoursesScreenState extends State<CoursesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBlueColor,
-      appBar: AppBar(
-        backgroundColor: kBlueColor,
-        title: Text("Courses"),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      drawer: SideNavBar(),
+      backgroundColor: Colors.purple,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         //scrollDirection: Axis.vertical,
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: kBlueColor,
-              image: DecorationImage(
-                alignment: Alignment.centerLeft,
-                image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
-              ),
+              color: Colors.purple,
             ),
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.symmetric(vertical: 50.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  "Learn Anytime, Anywhere",
-                  style: kSubheadingextStyle.copyWith(color: Colors.white),
+                Center(
+                  child: Text(
+                    "Learn Anytime, Anywhere",
+                    style: TextStyle(color: Colors.white, fontSize: 24.0),
+                  ),
                 )
               ],
             ),
