@@ -124,7 +124,6 @@ class _LandingScreenState extends State<LandingScreen> {
             return SignUpPage();
           }
           //_pushNotificationsManager.init();
-          // Return your home here
           return HomeScreen();
         } else {
           return Center(child: CircularProgressIndicator());

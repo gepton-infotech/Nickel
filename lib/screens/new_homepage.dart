@@ -16,11 +16,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
   pymaths crudmethods = new pymaths();
 
   var image = [];
   var hour = DateTime.now().hour;
-  String greeting;
 
   Stream courseStream;
   Stream blogsStream;
@@ -44,13 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
         blogsStream = result;
       });
     });
-    if (hour < 12) {
-      greeting = 'good Morning';
-    }
-    if (hour < 17) {
-      greeting = 'good afternoon';
-    }
-    greeting = 'good evening';
 
     //notifications
     _firebaseMessaging.configure(
@@ -81,8 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context)
-        .size; //this gonna give us total height and with of our device
+    List<Widget> _widgetOptions = <Widget>[
+      DashboardPage(blogsStream: blogsStream),
+      Text('Hello + $_bottomNavBarSelectedIndex'),
+      Text('Hello + $_bottomNavBarSelectedIndex'),
+      Text('Hello + $_bottomNavBarSelectedIndex'),
+    ];
     return Scaffold(
       //backgroundColor: kBlueColor,
       appBar: AppBar(
@@ -142,104 +139,33 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: SideNavBar(),
       // bottomNavigationBar: BottomNavBar(),
-      body: Scrollbar(
-        child: ListView(
-          children: [
-            Stack(
-              children: <Widget>[
-                Container(
-                  // Here the height of the container is 45% of our total height
-                  height: size.height * .45,
-                  decoration: BoxDecoration(
-                    color: kBlueColor,
-                    image: DecorationImage(
-                      alignment: Alignment.centerLeft,
-                      image:
-                          AssetImage("assets/images/undraw_pilates_gpdb.png"),
-                    ),
-                  ),
-                ),
-                SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        // TimeOfDay(hour: null, minute: null)
-                        SizedBox(
-                          height: 20,
-                        ),
-
-                        Text(
-                          "$greeting $firstname $lastname".toUpperCase(),
-                          style: Theme.of(context)
-                              .textTheme
-                              .display1
-                              .copyWith(fontWeight: FontWeight.w900),
-                        ),
-                        //SearchBar(),
-                        SizedBox(
-                          height: 70,
-                        ),
-                        StreamBuilder(
-                            stream: blogsStream,
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState !=
-                                  ConnectionState.active) {
-                                return Container(
-                                  child: Center(
-                                      child: CircularProgressIndicator(
-                                    backgroundColor: Colors.white,
-                                  )),
-                                );
-                              } else {
-                                if (snapshot.data['enrolled'].length == 0) {
-                                  return Container(
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "Please enroll in some courses to see your progress here",
-                                        style: kSubtitleTextSyule,
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return Container(
-                                    //color: Colors.blue,
-                                    height: MediaQuery.of(context).size.height,
-                                    child: GridView.builder(
-                                        primary: false,
-                                        itemCount:
-                                            snapshot.data['enrolled'].length,
-                                        gridDelegate:
-                                            SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2,
-                                                childAspectRatio: .85,
-                                                crossAxisSpacing: 20,
-                                                mainAxisSpacing: 20),
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          return CategoryCard(
-                                            name: snapshot.data['enrolled'],
-                                            index: index,
-                                            title: snapshot.data['enrolled']
-                                                [index],
-                                            svgSrc: "assets/icons/home4.png",
-                                            press: () {},
-                                          );
-                                        }),
-                                  );
-                                }
-                              }
-                            }),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
+      body: _widgetOptions.elementAt(_bottomNavBarSelectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Dashboard',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Courses',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.ac_unit),
+            label: 'Tests',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'Menu',
+          ),
+        ],
+        currentIndex: _bottomNavBarSelectedIndex,
+        onTap: (int index) {
+          setState(() {
+            _bottomNavBarSelectedIndex = index;
+          });
+        },
       ),
     );
   }
@@ -257,6 +183,113 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _newNotification = false;
     });
+  }
+}
+
+class DashboardPage extends StatelessWidget {
+  Stream blogsStream;
+  DashboardPage({this.blogsStream});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scrollbar(
+      child: ListView(
+        children: [
+          Stack(
+            children: <Widget>[
+              Container(
+                // Here the height of the container is 45% of our total height
+                height: (MediaQuery.of(context).size.height) * .45,
+                decoration: BoxDecoration(
+                  color: kBlueColor,
+                  image: DecorationImage(
+                    alignment: Alignment.centerLeft,
+                    image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
+                  ),
+                ),
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      // TimeOfDay(hour: null, minute: null)
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      Text(
+                        "Hello $firstname $lastname".toUpperCase(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .display1
+                            .copyWith(fontWeight: FontWeight.w900),
+                      ),
+                      //SearchBar(),
+                      SizedBox(
+                        height: 70,
+                      ),
+                      StreamBuilder(
+                          stream: blogsStream,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState !=
+                                ConnectionState.active) {
+                              return Container(
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                )),
+                              );
+                            } else {
+                              if (snapshot.data['enrolled'].length == 0) {
+                                return Container(
+                                  height: 100,
+                                  child: Center(
+                                    child: Text(
+                                      "Please enroll in some courses to see your progress here",
+                                      style: kSubtitleTextSyule,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return Container(
+                                  //color: Colors.blue,
+                                  height: MediaQuery.of(context).size.height,
+                                  child: GridView.builder(
+                                      primary: false,
+                                      itemCount:
+                                          snapshot.data['enrolled'].length,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              childAspectRatio: .85,
+                                              crossAxisSpacing: 20,
+                                              mainAxisSpacing: 20),
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return CategoryCard(
+                                          name: snapshot.data['enrolled'],
+                                          index: index,
+                                          title: snapshot.data['enrolled']
+                                              [index],
+                                          svgSrc: "assets/icons/home4.png",
+                                          press: () {},
+                                        );
+                                      }),
+                                );
+                              }
+                            }
+                          }),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -299,43 +332,3 @@ class MessageBean {
     );
   }
 }
-
-//Detail UI screen that will display the content of the message return from FCM
-// class DetailPage extends StatefulWidget {
-//   DetailPage(this.itemId);
-//   final String itemId;
-//   @override
-//   _DetailPageState createState() => _DetailPageState();
-// }
-
-// class _DetailPageState extends State<DetailPage> {
-//   MessageBean _item;
-//   StreamSubscription<MessageBean> _subscription;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _item = _items[widget.itemId];
-//     _subscription = _item.onChanged.listen((MessageBean item) {
-//       if (!mounted) {
-//         _subscription.cancel();
-//       } else {
-//         setState(() {
-//           _item = item;
-//         });
-//       }
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Item ${_item.itemId}"),
-//       ),
-//       body: Material(
-//         child: Center(child: Text("Item status: ${_item.status}")),
-//       ),
-//     );
-//   }
-// }

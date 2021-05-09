@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Course App',
+      title: 'Pyfin',
       theme: ThemeData(
           //  primarySwatch: Colors.purple,
           ),
@@ -26,20 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class HomeScreen extends StatelessWidget {
-//   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-//   void _openDrawer() {
-//     _scaffoldKey.currentState.openDrawer();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       key: _scaffoldKey,
-//       drawer: SideNavBar(),
-//       body:
-//     );
-//   }
-// }

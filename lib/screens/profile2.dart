@@ -12,7 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 import '../global.dart';
-import '../main.dart';
 import 'choose_avatar.dart';
 
 class ProfilePage extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 import 'otp_screen.dart';
@@ -19,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void submit() {
     _phone = phoneController.text;
-    _phone=_phone.split(" ").join("");
+    _phone = _phone.split(" ").join("");
 
     if (_phone.length > 10 || _phone.length < 10) {
       showDialog(
@@ -183,7 +182,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             placeholder: '+91...',
                           ),
                         ),
-                       
                         Container(
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
