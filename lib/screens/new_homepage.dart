@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
       MenuPage(),
     ];
     return Scaffold(
-      //backgroundColor: kBlueColor,
+      backgroundColor: Colors.purple,
       appBar: AppBar(
         title: Text(
           _title.elementAt(_bottomNavBarSelectedIndex),

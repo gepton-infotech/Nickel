@@ -31,9 +31,8 @@ class _SideNavBarState extends State<SideNavBar> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("${firstname}".toUpperCase() +
-                " " +
-                "${lastname}".toUpperCase()),
+            accountName: Text(
+                "$firstname".toUpperCase() + " " + "$lastname".toUpperCase()),
             accountEmail: Text(email),
             currentAccountPicture: CircleAvatar(
               backgroundImage: NetworkImage(photourl),

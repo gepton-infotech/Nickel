@@ -16,12 +16,12 @@ class _LandingScreenState extends State<LandingScreen> {
   Future<bool> getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String stringValue = prefs.getString('phoneee');
-    String stringValue2 = prefs.getString('firstNamee');
-    String stringValue3 = prefs.getString('lastNamee');
-    String stringValue4 = prefs.getString('emaill');
-    String stringValue5 = prefs.getString('photourll');
-    String stringValue6 = prefs.getString('photocoverr');
+    String phone = prefs.getString('phoneee');
+    String firstName = prefs.getString('firstName');
+    String lastName = prefs.getString('lastName');
+    String email = prefs.getString('emaill');
+    String photoUrl = prefs.getString('photourl');
+    String photoCover = prefs.getString('photocover');
     List<String> stringValue7 = prefs.getStringList('j'); //enrolled
     List<String> stringValue10 = prefs.getStringList('enrolledCoursesssssss');
     List<String> stringValue11 = prefs.getStringList('percentageeeeeeeeeeee');
@@ -33,15 +33,15 @@ class _LandingScreenState extends State<LandingScreen> {
     List<dynamic> name4 = box.get('courses');
 
     setState(() {
-      phone = stringValue;
-      firstname = stringValue2;
-      lastname = stringValue3;
-      email = stringValue4;
-      if (stringValue5 != null) {
-        photourl = stringValue5;
+      phone = phone;
+      firstname = firstName;
+      lastname = lastName;
+      email = email;
+      if (photoUrl != null) {
+        photourl = photoUrl;
       }
-      if (stringValue6 != null) {
-        photocover = stringValue6;
+      if (photoCover != null) {
+        photocover = photoCover;
       }
       if (stringValue7 != null) {
         visible = stringValue7;
@@ -71,7 +71,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
       //  print('Name: $name');
     });
-    return stringValue == null;
+    return phone == null;
   }
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
