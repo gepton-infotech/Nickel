@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pyfin/screens/home/contactPage.dart';
-import 'package:pyfin/screens/home/developerInfo.dart';
 import 'package:pyfin/screens/profile2.dart';
 import 'package:pyfin/screens/sign_up_screen.dart';
 import 'package:pyfin/utils/global.dart';

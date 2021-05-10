@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pyfin/services/crud.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:pyfin/utils/urlLauncher.dart';
 import '../utils/constants.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -12,14 +11,6 @@ class NotificationScreen extends StatefulWidget {
 class _NotificationScreenState extends State<NotificationScreen> {
   Pymaths crudmethods = new Pymaths();
   Stream blogsStream;
-
-  _launchURL(String link) async {
-    if (await canLaunch(link)) {
-      await launch(link);
-    } else {
-      throw 'Could not launch $link';
-    }
-  }
 
   void initState() {
     super.initState();
@@ -94,7 +85,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                     border: Border.all(color: kShadowColor)),
                                 child: ListTile(
                                   onTap: () {
-                                    _launchURL(snapshot
+                                    launchURL(snapshot
                                         .data.documents[index].data['link']);
                                   },
                                   leading: Container(

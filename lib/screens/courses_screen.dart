@@ -66,10 +66,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
 
   Stream blogsStream;
   void initState() {
-    // TODO: implement initState
     super.initState();
     print(courses);
-    //print(enrolled);
     crudmethods.getdata2().then((result) {
       setState(() {
         blogsStream = result;
