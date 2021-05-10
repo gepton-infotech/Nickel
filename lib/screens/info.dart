@@ -21,7 +21,7 @@ class AddInfo extends StatefulWidget {
 }
 
 class _AddInfoState extends State<AddInfo> {
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
   PushNotificationsManager _pushNotificationsManager =
       PushNotificationsManager();
   String _firstName = '';

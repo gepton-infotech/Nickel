@@ -16,7 +16,7 @@ class DashboardPage extends StatelessWidget {
             children: <Widget>[
               Container(
                 // Here the height of the container is 45% of our total height
-                height: (MediaQuery.of(context).size.height * 0.5),
+                height: (MediaQuery.of(context).size.height),
                 decoration: BoxDecoration(
                   color: Color(0xffDAB6FC),
                 ),

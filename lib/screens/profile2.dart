@@ -35,7 +35,7 @@ class MapScreenState extends State<ProfilePage>
   bool emailValid = true;
   List<Map<dynamic, dynamic>> _courseExamDate = List<Map>();
   List _courses = List<String>();
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
   Stream infostream;
   var ans = 0;
 

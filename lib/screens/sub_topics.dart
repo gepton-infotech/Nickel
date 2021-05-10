@@ -27,7 +27,7 @@ class _SubTopicsState extends State<SubTopics> {
   List<String> _completedTopics = List<String>();
 
   bool isloading = true;
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
 
   addStringToSF() async {
     print("SF INFO");

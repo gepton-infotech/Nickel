@@ -33,10 +33,10 @@ class _LandingScreenState extends State<LandingScreen> {
     List<dynamic> name4 = box.get('courses');
 
     setState(() {
-      stringValue = stringValue;
+      phone = stringValue;
       firstname = stringValue2;
       lastname = stringValue3;
-      stringValue4 = stringValue4;
+      email = stringValue4;
       if (stringValue5 != null) {
         photourl = stringValue5;
       }

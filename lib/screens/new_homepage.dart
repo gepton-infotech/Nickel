@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
 
   var image = [];
 

@@ -17,7 +17,7 @@ class _SideNavBarState extends State<SideNavBar> {
   String _email = '';
   String _photoUrl = '';
 
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
 
   @override
   void initState() {

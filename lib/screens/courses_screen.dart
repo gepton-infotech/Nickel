@@ -15,7 +15,7 @@ class CoursesScreen extends StatefulWidget {
 }
 
 class _CoursesScreenState extends State<CoursesScreen> {
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
   bool isloading = true;
 
   void showToast(message, Color color) {

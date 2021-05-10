@@ -19,7 +19,7 @@ class _CourseCardState extends State<CourseCard> {
   String _name = "";
   List _chapters;
   bool isloading = true;
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
   Stream constream;
 
   getContent(name) {

@@ -10,7 +10,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
   Stream blogsStream;
 
   _launchURL(String link) async {

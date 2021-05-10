@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _scrollController = ScrollController();
 
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
 
   Stream blogsStream;
 

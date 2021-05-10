@@ -28,7 +28,7 @@ class _ContentHeadingState extends State<ContentHeading> {
   // List<String> _completedTopics = List<String>();
 
   bool isloading = true;
-  pymaths crudmethods = new pymaths();
+  Pymaths crudmethods = new Pymaths();
 
   getContent3(name) {
     Topic topic;
