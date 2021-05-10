@@ -182,7 +182,7 @@ class MapScreenState extends State<ProfilePage>
           "courses": this._courses,
           "courseExamDate": this._courseExamDate,
         }).then(
-          (value) => showToast("Values are updated", kBlueColor),
+          (value) => showToast("Values are updated", kPrimaryColor),
         );
       } else {
         showDialog(
@@ -230,12 +230,8 @@ class MapScreenState extends State<ProfilePage>
       },
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: kBlueColor,
-            elevation: 0,
             title: Text("Profile"),
-            centerTitle: true,
           ),
-          drawer: SideNavBar(),
           body: isloading
               ? Center(
                   child: CircularProgressIndicator(),
@@ -308,7 +304,8 @@ class MapScreenState extends State<ProfilePage>
                                                             }));
                                                   },
                                                   child: new CircleAvatar(
-                                                    backgroundColor: kBlueColor,
+                                                    backgroundColor:
+                                                        kPrimaryColor,
                                                     radius: 20.0,
                                                     child: new Icon(
                                                       Icons.camera_alt,
@@ -534,7 +531,7 @@ class MapScreenState extends State<ProfilePage>
                                               onTap: () => {
                                                 showToast(
                                                     "Please sign out to change phone number",
-                                                    kBlueColor)
+                                                    kPrimaryColor)
                                               },
                                               child: new TextField(
                                                 controller: _phoneController,
@@ -565,7 +562,7 @@ class MapScreenState extends State<ProfilePage>
                                         return MultiSelectFormField(
                                           autovalidate: false,
                                           enabled: !_status,
-                                          chipBackGroundColor: kBlueColor,
+                                          chipBackGroundColor: kPrimaryColor,
                                           chipLabelStyle: TextStyle(
                                               fontWeight: FontWeight.bold),
                                           dialogTextStyle: TextStyle(
@@ -676,7 +673,7 @@ class MapScreenState extends State<ProfilePage>
                                                                   Colors.white,
                                                             ),
                                                           ),
-                                                          color: kBlueColor,
+                                                          color: kPrimaryColor,
                                                         ),
                                                       ],
                                                     );
@@ -719,7 +716,7 @@ class MapScreenState extends State<ProfilePage>
           onPressed: () {
             updateProfile(phone);
           },
-          color: kBlueColor,
+          color: kPrimaryColor,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(14))),
           child: Container(
@@ -735,7 +732,7 @@ class MapScreenState extends State<ProfilePage>
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    color: kBlueColor,
+                    color: kPrimaryColor,
                   ),
                   child: Icon(
                     Icons.arrow_forward_ios,
@@ -754,7 +751,7 @@ class MapScreenState extends State<ProfilePage>
   Widget _getEditIcon() {
     return new GestureDetector(
       child: new CircleAvatar(
-        backgroundColor: kBlueColor,
+        backgroundColor: kPrimaryColor,
         radius: 14.0,
         child: new Icon(
           Icons.edit,
@@ -773,7 +770,7 @@ class MapScreenState extends State<ProfilePage>
   multiselectformfield() {
     return MultiSelectFormField(
       autovalidate: false,
-      chipBackGroundColor: kBlueColor,
+      chipBackGroundColor: kPrimaryColor,
       chipLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       dialogTextStyle: TextStyle(fontWeight: FontWeight.bold),
       checkBoxActiveColor: Colors.white,

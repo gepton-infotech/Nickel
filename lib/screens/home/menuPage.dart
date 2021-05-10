@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/home/contactPage.dart';
 import 'package:pyfin/screens/home/developerInfo.dart';
@@ -17,14 +18,21 @@ class MenuPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: CircleAvatar(
-              child: Icon(
-                Icons.supervised_user_circle,
-                size: MediaQuery.of(context).size.height * 0.15,
-              ),
-            ),
-          ),
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(photocover),
+                    foregroundImage: NetworkImage(photourl),
+                    radius: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  Text(
+                    '$firstname $lastname',
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height * 0.03),
+                  ),
+                ],
+              )),
           MenuTile(
             leadingIcon: Icons.person,
             title: 'Your Profile',

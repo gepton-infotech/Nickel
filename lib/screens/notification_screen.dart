@@ -34,9 +34,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBlueColor,
+        backgroundColor: kPrimaryColor,
         appBar: AppBar(
-          backgroundColor: kBlueColor,
+          backgroundColor: kPrimaryColor,
           title: Text("Notifications"),
           centerTitle: true,
           elevation: 0,
@@ -47,7 +47,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  color: kBlueColor,
+                  color: kPrimaryColor,
                   image: DecorationImage(
                     alignment: Alignment.centerLeft,
                     image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
