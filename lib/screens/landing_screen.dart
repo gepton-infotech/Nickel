@@ -4,7 +4,7 @@ import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/services/push_notification.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import '../global.dart';
+import '../utils/global.dart';
 import 'sign_up_screen.dart';
 
 class LandingScreen extends StatefulWidget {

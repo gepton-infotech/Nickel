@@ -10,8 +10,8 @@ import 'package:pyfin/services/crud.dart';
 import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constants.dart';
-import '../global.dart';
+import '../utils/constants.dart';
+import '../utils/global.dart';
 import 'choose_avatar.dart';
 
 class ProfilePage extends StatefulWidget {

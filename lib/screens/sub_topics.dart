@@ -4,8 +4,8 @@ import 'package:pyfin/model/chapters.dart';
 import 'package:pyfin/screens/content_heading.dart';
 import 'package:pyfin/services/crud.dart';
 
-import '../constants.dart';
-import '../global.dart';
+import '../utils/constants.dart';
+import '../utils/global.dart';
 
 class SubTopics extends StatefulWidget {
   String _sendName;

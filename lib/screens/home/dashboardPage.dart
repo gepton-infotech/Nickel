@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pyfin/constants.dart';
-import 'package:pyfin/global.dart';
+import 'package:pyfin/utils/constants.dart';
+import 'package:pyfin/utils/global.dart';
 import 'package:pyfin/widgets/category_card.dart';
 
 class DashboardPage extends StatelessWidget {

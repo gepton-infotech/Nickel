@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:pyfin/constants.dart';
-import 'package:pyfin/global.dart';
+import 'package:pyfin/utils/constants.dart';
+import 'package:pyfin/utils/global.dart';
 import 'package:pyfin/model/courses.dart';
 import 'package:pyfin/screens/sub_topics.dart';
 import 'package:pyfin/services/crud.dart';

@@ -79,13 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
       MenuPage(),
     ];
     return Scaffold(
-      backgroundColor: Colors.purple,
       appBar: AppBar(
         title: Text(
           _title.elementAt(_bottomNavBarSelectedIndex),
         ),
-        centerTitle: true,
-        elevation: 0,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16.0),
@@ -134,7 +131,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: SideNavBar(),
       body: _widgetOptions.elementAt(_bottomNavBarSelectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:pyfin/global.dart';
+import 'package:pyfin/utils/global.dart';
 import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:slimy_card/slimy_card.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class HomePage extends StatefulWidget {
   @override

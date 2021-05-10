@@ -3,7 +3,7 @@ import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/screens/profile2.dart';
 import 'package:pyfin/screens/sign_up_screen.dart';
-import '../global.dart';
+import '../utils/global.dart';
 import '../services/crud.dart';
 
 class SideNavBar extends StatefulWidget {

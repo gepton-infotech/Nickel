@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override

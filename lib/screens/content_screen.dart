@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class ContentScreen extends StatefulWidget {
-  List<String> _name;
-  List<String> _content;
+  final List<String> _name;
+  final List<String> _content;
   final _index;
   final _length;
   ContentScreen(this._name, this._content, this._index, this._length);

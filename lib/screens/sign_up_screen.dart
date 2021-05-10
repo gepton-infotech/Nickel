@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 import 'otp_screen.dart';
 
 class SignUpPage extends StatefulWidget {

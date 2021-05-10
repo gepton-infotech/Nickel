@@ -1,15 +1,12 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pyfin/model/profile.dart';
 import 'package:pyfin/widgets/horizontal_view.dart';
-import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constants.dart';
-import '../global.dart';
+import '../utils/constants.dart';
+import '../utils/global.dart';
 import '../services/crud.dart';
 
 class CoursesScreen extends StatefulWidget {
@@ -83,111 +80,107 @@ class _CoursesScreenState extends State<CoursesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        //scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.purple,
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          //scrollDirection: Axis.vertical,
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              alignment: Alignment.center,
+              child: Text(
+                "Learn Anytime, Anywhere",
+                style: TextStyle(
+                    color: kTextDark,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-            padding: EdgeInsets.symmetric(vertical: 50.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    "Learn Anytime, Anywhere",
-                    style: TextStyle(color: Colors.white, fontSize: 24.0),
+            Expanded(
+              child: Container(
+                  //margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
                   ),
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: Container(
-                //margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                height: MediaQuery.of(context).size.height,
-                child: StreamBuilder(
-                    stream: blogsStream,
-                    builder: (context, snapshot) {
-                      if (snapshot.data == null) {
-                        return Container(
-                          child: Center(child: CircularProgressIndicator()),
-                        );
-                      }
-                      // if (courses.contains(snapshot
-                      //     .data.documents[index].data['courseName'])) {
-                      return ListView.builder(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        itemCount: snapshot.data.documents.length,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        //  primary: false,
-                        itemBuilder: (context, index) {
-                          //  print(snapshot
-                          //    .data.documents[index].data['courseName']);
-                          //if (courses.contains(snapshot
-                          //  .data.documents[index].data['courseName'])) {
-                          return Visibility(
-                            visible: courses.contains(snapshot
-                                .data.documents[index].data['courseName']),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.only(left: 5),
-                                      child: Text(
-                                        snapshot.data.documents[index]
-                                            .data['courseName'],
-                                        style: kSubheadingextStyle.copyWith(
-                                            color: kBlueColor),
-                                      ),
-                                    ),
-                                    Container(
-                                      //padding: EdgeInsets.only(left: 10),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: _enroll(
-                                        index,
-                                        snapshot.data.documents[index]
-                                            .data['courseName'],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                HorizontalView(
-                                    snapshot.data.documents[index]
-                                        .data['courseName'],
-                                    index,
-                                    snapshot.data.documents[index]
-                                        .data['papers'].length,
-                                    snapshot
-                                        .data.documents[index].data['papers']),
-                                SizedBox(
-                                  height: 20,
-                                )
-                              ],
-                            ),
+                  height: MediaQuery.of(context).size.height,
+                  child: StreamBuilder(
+                      stream: blogsStream,
+                      builder: (context, snapshot) {
+                        if (snapshot.data == null) {
+                          return Container(
+                            child: Center(child: CircularProgressIndicator()),
                           );
-                          //}
-                          //return null;
-                        },
-                      );
-                    })),
-          )
-        ],
+                        }
+                        // if (courses.contains(snapshot
+                        //     .data.documents[index].data['courseName'])) {
+                        return ListView.builder(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          itemCount: snapshot.data.documents.length,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          //  primary: false,
+                          itemBuilder: (context, index) {
+                            //  print(snapshot
+                            //    .data.documents[index].data['courseName']);
+                            //if (courses.contains(snapshot
+                            //  .data.documents[index].data['courseName'])) {
+                            return Visibility(
+                              visible: courses.contains(snapshot
+                                  .data.documents[index].data['courseName']),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.only(left: 5),
+                                        child: Text(
+                                          snapshot.data.documents[index]
+                                              .data['courseName'],
+                                          style: kSubheadingextStyle.copyWith(
+                                              color: kBlueColor),
+                                        ),
+                                      ),
+                                      Container(
+                                        //padding: EdgeInsets.only(left: 10),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: _enroll(
+                                          index,
+                                          snapshot.data.documents[index]
+                                              .data['courseName'],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  HorizontalView(
+                                      snapshot.data.documents[index]
+                                          .data['courseName'],
+                                      index,
+                                      snapshot.data.documents[index]
+                                          .data['papers'].length,
+                                      snapshot.data.documents[index]
+                                          .data['papers']),
+                                  SizedBox(
+                                    height: 20,
+                                  )
+                                ],
+                              ),
+                            );
+                            //}
+                            //return null;
+                          },
+                        );
+                      })),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -3,13 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'package:pyfin/constants.dart';
+import 'package:pyfin/utils/constants.dart';
 import 'package:pyfin/screens/choose_avatar.dart';
 import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:pyfin/services/push_notification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../global.dart';
+import '../utils/global.dart';
 import '../model/profile.dart';
 import 'package:flutter/material.dart';
 

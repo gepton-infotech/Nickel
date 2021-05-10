@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:pyfin/global.dart';
+import 'package:pyfin/utils/global.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 //import 'package:meditation_app/constants.dart';
 
 class CategoryCard extends StatelessWidget {

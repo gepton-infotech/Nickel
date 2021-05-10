@@ -1,12 +1,10 @@
 import 'package:hive/hive.dart';
-import 'package:pyfin/global.dart';
+import 'package:pyfin/utils/global.dart';
 import 'package:flutter/material.dart';
-import 'package:pyfin/screens/landing_screen.dart';
-import 'package:pyfin/screens/new_homepage.dart';
 import 'package:pyfin/screens/splash_page.dart';
 
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:pyfin/theme.dart';
+import 'package:pyfin/utils/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

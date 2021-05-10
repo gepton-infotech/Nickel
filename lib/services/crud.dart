@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../global.dart';
+import '../utils/global.dart';
 
 class pymaths {
   Future<void> addpymaths(data, _phone) async {

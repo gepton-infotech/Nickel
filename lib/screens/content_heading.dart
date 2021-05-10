@@ -5,14 +5,14 @@ import 'package:pyfin/screens/content_screen.dart';
 import 'package:pyfin/services/crud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constants.dart';
-import '../global.dart';
+import '../utils/constants.dart';
+import '../utils/global.dart';
 
 class ContentHeading extends StatefulWidget {
-  String _sendName;
-  int _sendIndex;
+  final String _sendName;
+  final int _sendIndex;
   final List _subContent;
-  String _subContentName;
+  final String _subContentName;
   ContentHeading(
       this._sendName, this._sendIndex, this._subContent, this._subContentName);
   @override
