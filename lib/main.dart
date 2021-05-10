@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pyfin',
       theme: appTheme(),
-      home: HomeScreen(),
+      home: SplashPage(),
     );
   }
 }
