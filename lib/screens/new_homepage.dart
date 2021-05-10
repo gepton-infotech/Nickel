@@ -6,7 +6,6 @@ import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/screens/home/menuPage.dart';
 import 'package:pyfin/screens/notification_screen.dart';
 import 'package:pyfin/services/crud.dart';
-import 'package:pyfin/widgets/nav_drawer.dart';
 
 import 'package:pyfin/screens/home/dashboardPage.dart';
 

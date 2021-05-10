@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/home/contactPage.dart';
 import 'package:pyfin/screens/home/developerInfo.dart';
 import 'package:pyfin/screens/profile2.dart';
+import 'package:pyfin/screens/sign_up_screen.dart';
 import 'package:pyfin/utils/global.dart';
 import 'package:pyfin/widgets/menuTile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuPage extends StatelessWidget {
   @override
@@ -80,12 +83,23 @@ class MenuPage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              print('Hello');
+              _removeUserData(context);
             },
             child: Text('Logout'),
           )
         ],
       ),
     );
+  }
+
+  _removeUserData(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getKeys();
+    prefs.clear();
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => SignUpPage()),
+        (Route<dynamic> route) => false);
   }
 }
