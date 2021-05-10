@@ -5,6 +5,7 @@ import 'package:pyfin/screens/home/developerInfo.dart';
 import 'package:pyfin/screens/profile2.dart';
 import 'package:pyfin/screens/sign_up_screen.dart';
 import 'package:pyfin/utils/global.dart';
+import 'package:pyfin/utils/urlLauncher.dart';
 import 'package:pyfin/widgets/menuTile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,10 +50,7 @@ class MenuPage extends StatelessWidget {
             leadingIcon: Icons.contact_page,
             title: 'Contact Us',
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ContactPage()),
-              );
+              launchURL('https://pyfinacademy.com/contact');
             },
           ),
           SizedBox(
@@ -62,20 +60,14 @@ class MenuPage extends StatelessWidget {
             leadingIcon: Icons.people,
             title: 'Developer Info',
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Gepton()),
-              );
+              launchURL('https://gepton.com');
             },
           ),
           MenuTile(
             leadingIcon: Icons.policy,
             title: 'Privacy Policy',
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage(phone)),
-              );
+              launchURL('https://pyfinacademy.com/privacy');
             },
           ),
           SizedBox(
