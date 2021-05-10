@@ -1,4 +1,6 @@
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
+import 'package:pyfin/utils/constants.dart';
 import 'package:pyfin/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/splash_page.dart';
@@ -8,6 +10,12 @@ import 'package:pyfin/utils/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor: kSecondaryColor,
+      statusBarColor: kPrimaryColor,
+    ),
+  );
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   box = await Hive.openBox('testBox');
