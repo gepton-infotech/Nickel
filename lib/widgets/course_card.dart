@@ -7,8 +7,8 @@ import 'package:pyfin/screens/sub_topics.dart';
 import 'package:pyfin/services/crud.dart';
 
 class CourseCard extends StatefulWidget {
-  String _sendName;
-  int _sendIndex;
+  final String _sendName;
+  final int _sendIndex;
   final String _items;
   CourseCard(this._sendName, this._sendIndex, this._items);
   @override
@@ -49,7 +49,6 @@ class _CourseCardState extends State<CourseCard> {
   }
 
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     getContent(widget._items);

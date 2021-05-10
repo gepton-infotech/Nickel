@@ -7,7 +7,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:pyfin/model/profile.dart';
 import 'package:pyfin/services/crud.dart';
-import 'package:pyfin/widgets/nav_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/constants.dart';
@@ -129,7 +128,6 @@ class MapScreenState extends State<ProfilePage>
   Stream blogsStream;
 
   void initState() {
-    // TODO: implement initState
     super.initState();
     //setState(() {});
     //print(photourl);

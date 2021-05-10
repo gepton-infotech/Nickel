@@ -4,7 +4,7 @@ import 'package:pyfin/utils/global.dart';
 import 'package:pyfin/widgets/category_card.dart';
 
 class DashboardPage extends StatelessWidget {
-  Stream blogsStream;
+  final Stream blogsStream;
   DashboardPage({this.blogsStream});
 
   @override

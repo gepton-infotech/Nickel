@@ -8,10 +8,10 @@ import '../utils/constants.dart';
 import '../utils/global.dart';
 
 class SubTopics extends StatefulWidget {
-  String _sendName;
-  int _sendIndex;
+  final String _sendName;
+  final int _sendIndex;
   final List _subtTopics;
-  String _subTopicName;
+  final String _subTopicName;
   SubTopics(
       this._sendName, this._sendIndex, this._subtTopics, this._subTopicName);
   @override
@@ -63,7 +63,6 @@ class _SubTopicsState extends State<SubTopics> {
   }
 
   void initState() {
-    // TODO: implement initState
     super.initState();
     print(widget._subtTopics);
     print("hellllo");

@@ -22,7 +22,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 
   void initState() {
-    // TODO: implement initState
     super.initState();
     crudmethods.getdata3().then((result) {
       setState(() {
