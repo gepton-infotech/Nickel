@@ -27,7 +27,7 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         // padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
@@ -58,18 +58,15 @@ class CategoryCard extends StatelessWidget {
                     width: 110.0,
                     lineHeight: 14.0,
                     percent: (double.parse(percentage[map[name[index]]]) / 100),
-                    backgroundColor: Colors.grey,
-                    progressColor: Colors.blue,
+                    backgroundColor: kSecondaryColor,
+                    progressColor: kComplimentaryColor,
                   ),
 
                   Spacer(),
                   Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .title
-                        .copyWith(fontSize: 12),
+                    style: TextStyle(color: kTextLight),
                   )
                 ],
               ),

@@ -19,7 +19,7 @@ class TestCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
-            color: kComplimentaryColor,
+            color: kPrimaryColor,
           ),
           height: size.height * 0.25,
           width: size.height * 0.25,
