@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/courses_screen.dart';
-import 'package:pyfin/screens/home/menuPage.dart';
-import 'package:pyfin/screens/home/testPage.dart';
+import 'package:pyfin/screens/home/menu/menuPage.dart';
+import 'package:pyfin/screens/home/quiz/testPage.dart';
 import 'package:pyfin/screens/notification_screen.dart';
 import 'package:pyfin/services/crud.dart';
 

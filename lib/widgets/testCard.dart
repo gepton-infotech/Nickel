@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:pyfin/utils/constants.dart';
 
 class TestCard extends StatelessWidget {
-  const TestCard({
-    @required this.size,
-  });
+  const TestCard({@required this.size, this.onTap, this.title});
 
   final Size size;
+  final Function onTap;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          print('Hello World');
-        },
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
@@ -25,7 +23,7 @@ class TestCard extends StatelessWidget {
           width: size.height * 0.25,
           child: Center(
             child: Text(
-              'Demo Test',
+              title,
               style: TextStyle(color: kTextLight, fontSize: 30.0),
             ),
           ),
