@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/courses_screen.dart';
 import 'package:pyfin/screens/home/menuPage.dart';
+import 'package:pyfin/screens/home/testPage.dart';
 import 'package:pyfin/screens/notification_screen.dart';
 import 'package:pyfin/services/crud.dart';
 
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> _widgetOptions = <Widget>[
       DashboardPage(blogsStream: blogsStream),
       CoursesScreen(),
-      Text('Hello + $_bottomNavBarSelectedIndex'),
+      TestPage(),
       MenuPage(),
     ];
     return Scaffold(
