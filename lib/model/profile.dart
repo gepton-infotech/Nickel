@@ -70,7 +70,7 @@ class Contact {
     _phone = phone;
   }
 
-  Contact.fromSnap(DocumentSnapshot snapshot) {
+  Contact.fromDocument(DocumentSnapshot snapshot) {
     this._firstName = snapshot['firstName'];
     this._lastName = snapshot['lastName'];
     this._email = snapshot['email'];

@@ -39,10 +39,10 @@ class _SubTopicsState extends State<SubTopics> {
 
   updateProfile() {
     //  addStringToSF();
-    Firestore.instance
+    FirebaseFirestore.instance
         .collection("students")
-        .document(phone.replaceAll(' ', ''))
-        .updateData({
+        .doc(phone.replaceAll(' ', ''))
+        .update({
       "completedTopics": this._completedTopics,
     });
   }

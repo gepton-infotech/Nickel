@@ -4,7 +4,7 @@ import 'package:pyfin/utils/constants.dart';
 import 'package:pyfin/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:pyfin/screens/splash_page.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:pyfin/utils/theme.dart';
 
@@ -19,6 +19,7 @@ void main() async {
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   box = await Hive.openBox('testBox');
+  Firebase.initializeApp();
   runApp(
     MyApp(),
   );

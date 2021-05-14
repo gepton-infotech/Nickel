@@ -5,53 +5,59 @@ import '../utils/global.dart';
 class Pymaths {
   Future<void> addpymaths(data, _phone) async {
     DocumentReference reference =
-        Firestore.instance.collection("students").document(_phone);
-    reference.setData(data).catchError((e) {
+        FirebaseFirestore.instance.collection("students").doc(_phone);
+    reference.set(data).catchError((e) {
       print(e);
     });
   }
 
   getInfo() async {
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection("students")
-        .document(phone.replaceAll(' ', ''))
-        .snapshots();
+        .doc(phone.replaceAll(' ', ''))
+        .get();
   }
 
   getdata(_phone) async {
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection("students")
-        .document(_phone)
+        .doc(_phone)
         .get();
   }
 
   getAvatar() async {
-    return await Firestore.instance.collection("avatars").snapshots();
+    return FirebaseFirestore.instance.collection("avatars").get();
   }
 
   getContent(_name) async {
-    return await Firestore.instance.collection("Papers").document(_name).get();
+    return await FirebaseFirestore.instance
+        .collection("Papers")
+        .doc(_name)
+        .get();
   }
 
   getContent2(_name) async {
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection("Chapters")
-        .document(_name)
+        .doc(_name)
         .get();
   }
 
   getContent3(_name) async {
-    return await Firestore.instance.collection("Topics").document(_name).get();
+    return await FirebaseFirestore.instance
+        .collection("Topics")
+        .doc(_name)
+        .get();
   }
 
   getdata2() async {
-    return await Firestore.instance.collection("courses").snapshots();
+    return FirebaseFirestore.instance.collection("courses").get();
   }
 
   getdata3() async {
-    return await Firestore.instance
+    return FirebaseFirestore.instance
         .collection("notifications")
         .orderBy("createdAt", descending: true)
-        .snapshots();
+        .get();
   }
 }

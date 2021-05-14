@@ -11,35 +11,27 @@ class _PushMessagingExampleState extends State<PushMessagingExample> {
   String _homeScreenText = "Waiting for token...";
   int _bottomNavBarSelectedIndex = 0;
   bool _newNotification = false;
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   @override
   void initState() {
     super.initState();
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-        setState(() {
-          _newNotification = true;
-        });
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-        _navigateToItemDetail(message);
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-        _navigateToItemDetail(message);
-      },
-    );
-
-    //Needed by iOS only
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      print("Settings registered: $settings");
-    });
+    // _firebaseMessaging.configure(
+    //   onMessage: (Map<String, dynamic> message) async {
+    //     print("onMessage: $message");
+    //     setState(() {
+    //       _newNotification = true;
+    //     });
+    //   },
+    //   onLaunch: (Map<String, dynamic> message) async {
+    //     print("onLaunch: $message");
+    //     _navigateToItemDetail(message);
+    //   },
+    //   onResume: (Map<String, dynamic> message) async {
+    //     print("onResume: $message");
+    //     _navigateToItemDetail(message);
+    //   },
+    // );
 
     //Getting the token from FCM
     _firebaseMessaging.getToken().then((String token) {
@@ -66,32 +58,32 @@ class _PushMessagingExampleState extends State<PushMessagingExample> {
             BottomNavigationBarItem(
               icon: _newNotification
                   ? Stack(
-                children: <Widget>[
-                  Icon(Icons.notifications),
-                  Positioned(
-                    right: 0,
-                    child: Container(
-                      padding: EdgeInsets.all(1),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      constraints: BoxConstraints(
-                        minWidth: 13,
-                        minHeight: 13,
-                      ),
-                      child: Text(
-                        '',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 8,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
-                ],
-              )
+                      children: <Widget>[
+                        Icon(Icons.notifications),
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            padding: EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 13,
+                              minHeight: 13,
+                            ),
+                            child: Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 8,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   : Icon(Icons.notifications),
               title: Text('Notifications'),
             ),
@@ -101,14 +93,15 @@ class _PushMessagingExampleState extends State<PushMessagingExample> {
           onTap: _onItemTapped,
         ),
         body: Material(
-          child:
-          Padding(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
-              child: Text(_homeScreenText,style: TextStyle(fontSize: 19),),
+              child: Text(
+                _homeScreenText,
+                style: TextStyle(fontSize: 19),
+              ),
             ),
           ),
-
         ));
   }
 
@@ -126,8 +119,8 @@ class _PushMessagingExampleState extends State<PushMessagingExample> {
   void _onItemTapped(int index) {
     setState(() {
       _bottomNavBarSelectedIndex = index;
-      if (index == 1){
-        _newNotification = false ;
+      if (index == 1) {
+        _newNotification = false;
       }
     });
   }

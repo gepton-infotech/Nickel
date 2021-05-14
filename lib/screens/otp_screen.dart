@@ -161,15 +161,14 @@ class _OtpPageState extends State<OtpPage> {
                       onPressed: () async {
                         try {
                           final AuthCredential credential =
-                              PhoneAuthProvider.getCredential(
+                              PhoneAuthProvider.credential(
                             verificationId: _verificationcode,
                             smsCode: text,
                           );
-                          final AuthResult result =
+                          final UserCredential result =
                               await _auth.signInWithCredential(credential);
                           print(result);
-                          final FirebaseUser currentUser =
-                              await _auth.currentUser();
+                          final User currentUser = _auth.currentUser;
                           assert(currentUser != null);
                           addStringToSF();
                           Navigator.pushReplacement(
@@ -293,7 +292,7 @@ class _OtpPageState extends State<OtpPage> {
             showToast("Something went wrong", Colors.red);
           });
         },
-        verificationFailed: (AuthException e) {
+        verificationFailed: (FirebaseAuthException e) {
           print(e.message);
           print("inside");
         },

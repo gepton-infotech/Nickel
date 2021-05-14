@@ -97,7 +97,7 @@ class MapScreenState extends State<ProfilePage>
   getProfile(_phone) {
     Contact contact;
     crudmethods.getdata(_phone).then((result) {
-      contact = Contact.fromSnap(result);
+      contact = Contact.fromDocument(result);
       //print(result);
       _fnController.text = contact.firstName;
       _lnController.text = contact.lastName;
@@ -168,10 +168,10 @@ class MapScreenState extends State<ProfilePage>
     if (_firstName.isNotEmpty && _lastName.isNotEmpty && _email.isNotEmpty) {
       if (EmailValidator.validate(_email)) {
         addStringToSF();
-        Firestore.instance
+        FirebaseFirestore.instance
             .collection("students")
-            .document(_phone.replaceAll(' ', ''))
-            .updateData({
+            .doc(_phone.replaceAll(' ', ''))
+            .update({
           "firstName": this._firstName,
           "lastName": this._lastName,
           "email": this._email,

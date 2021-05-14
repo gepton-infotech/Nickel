@@ -42,10 +42,10 @@ class _CoursesScreenState extends State<CoursesScreen> {
 
   updateProfile() {
     //  addStringToSF();
-    Firestore.instance
+    FirebaseFirestore.instance
         .collection("students")
-        .document(phone.replaceAll(' ', ''))
-        .updateData({
+        .doc(phone.replaceAll(' ', ''))
+        .update({
       "enrolled": enrolled,
     });
   }
@@ -53,7 +53,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
   getProfile(_phone) {
     Contact contact;
     crudmethods.getdata(_phone).then((result) {
-      contact = Contact.fromSnap(result);
+      contact = Contact.fromDocument(result);
       //print(result)
       setState(() {
         print("in");

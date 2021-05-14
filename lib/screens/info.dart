@@ -34,7 +34,7 @@ class _AddInfoState extends State<AddInfo> {
   List<Map<dynamic, dynamic>> _courseExamDate = List<Map>();
   bool yesORno = false;
 
-  bool isloading = true;
+  bool isloading = false;
   bool emailValid = true;
   // List<dynamic> demo = ['upsc', 'neet', 'jee'];
   // bool pressed = true;
@@ -92,38 +92,44 @@ class _AddInfoState extends State<AddInfo> {
   getProfile(_phone) {
     Contact contact;
     crudmethods.getdata(_phone).then((result) {
-      contact = Contact.fromSnap(result);
+      print(result);
+      // contact = Contact.fromDocument(result);
       if (result != null) {
-        //print(result);
-        _fnController.text = contact.firstName;
-        _lnController.text = contact.lastName;
-        _phoneController.text = contact.phone;
-        _eController.text = contact.email;
-        setState(() {
-          _firstName = contact.firstName;
-          _lastName = contact.lastName;
-          _email = contact.email;
-          _photoUrl = contact.photoUrl;
-          _photoCover = contact.photoCover;
-          _phone = contact.phone;
-          _courses = contact.courses;
-          _examDate = contact.courseExamDate;
-          //_country = contact.country;
-          print(_examDate);
+        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+        print(result);
+        for (final category in result.docs) {
+          _fnController.text = category.data()['firstName'];
+          _lnController.text = category.data()['lastName'];
 
-          var i = 0;
-          for (var x in _examDate) {
-            var s = x["date"];
-            _dates[i] = DateTime.parse(s);
-            i++;
-            //print(x);
-          }
-
-          //_courseExamDate = contact.courseExamDate;
-          isloading = false;
-          print(_courses);
-        });
+          _phoneController.text = category.data()['phone'];
+          _eController.text = category.data()['email'];
+        }
       }
+
+      setState(() {
+        _firstName = _fnController.text;
+        _lastName = _lnController.text;
+        _email = _eController.text;
+        // _photoUrl = contact.photoUrl;
+        //_photoCover = contact.photoCover;
+        _phone = _phoneController.text;
+//_courses = contact.courses;
+        // _examDate = contact.courseExamDate;
+        //_country = contact.country;
+        print(_examDate);
+
+        // var i = 0;
+        // for (var x in _examDate) {
+        //   var s = x["date"];
+        //   _dates[i] = DateTime.parse(s);
+        //   i++;
+        //   //print(x);
+        // }
+
+        //_courseExamDate = contact.courseExamDate;
+        isloading = false;
+        print(_courses);
+      });
     });
   }
 
@@ -131,7 +137,8 @@ class _AddInfoState extends State<AddInfo> {
   void initState() {
     super.initState();
     print(photourl);
-    _phone = widget._nphone;
+    _phone = (widget._nphone).replaceAll(' ', '');
+    print(_phone);
     crudmethods.getdata2().then((result) {
       setState(() {
         blogsStream = result;
@@ -141,9 +148,9 @@ class _AddInfoState extends State<AddInfo> {
   }
 
   checkNumber() async {
-    DocumentSnapshot ds = await Firestore.instance
+    DocumentSnapshot ds = await FirebaseFirestore.instance
         .collection("students")
-        .document(_phone.replaceAll(' ', ''))
+        .doc(_phone.replaceAll(' ', ''))
         .get();
     this.setState(() {
       yesORno = ds.exists;

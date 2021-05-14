@@ -12,14 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
   cached_network_image: ^2.0.0
-  cloud_firestore: ^0.13.4
+  cloud_firestore:
   cupertino_icons: ^1.0.0
   email_validator: ^1.0.6
-  firebase_auth: null
-  firebase_core: null
-  firebase_database: null
-  firebase_messaging: ^6.0.16
-  firebase_storage: null
+  firebase_auth: ^1.1.4
+  firebase_core: ^1.1.1
+  firebase_messaging:
   flushbar: ^1.10.4
   flutter_markdown: ^0.3.4
   flutter_mobx: ^1.1.0
@@ -31,17 +29,16 @@ dependencies:
   http: null
   image_picker: null
   international_phone_input: ^1.0.4
-  localstorage: ^3.0.6+9
+  localstorage:
   mobx: ^1.1.1
   multiselect_formfield: ^0.1.5
   numeric_keyboard: ^1.0.0
-  path_provider: ^1.6.27
+  path_provider:
   percent_indicator: ^2.1.9+1
   random_string: ^2.1.0
   shared_preferences: ^0.4.0
   slimy_card: ^1.0.4
   url_launcher: ^6.0.3
-  velocity_x: ^1.0.1
   multi_select_flutter: ^3.1.8
   animated_splash_screen: ^1.0.1+2
   lottie: ^0.7.0+1
