@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../utils/global.dart';
 
 class Pymaths {
+
+  final _firestore = FirebaseFirestore.instance;
+
   Future<void> addpymaths(data, _phone) async {
     DocumentReference reference =
         FirebaseFirestore.instance.collection("students").doc(_phone);
@@ -19,10 +22,9 @@ class Pymaths {
   }
 
   getdata(_phone) async {
-    return await FirebaseFirestore.instance
+    return await _firestore
         .collection("students")
-        .doc(_phone)
-        .get();
+        .doc(_phone).get();
   }
 
   getAvatar() async {

@@ -1,9 +1,9 @@
 name: pyfin
-description: A new Flutter project.
+description: Pyfin Academy App.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   cached_network_image: ^2.0.0
-  cloud_firestore:
+  cloud_firestore: ^2.1.0
   cupertino_icons: ^1.0.0
   email_validator: ^1.0.6
   firebase_auth: ^1.1.4
@@ -26,8 +26,8 @@ dependencies:
   fluttertoast: ^7.1.6
   hive: ^1.0.0
   hive_flutter: ^0.2.1
-  http: null
-  image_picker: null
+  http: ^0.13.3
+  image_picker: ^0.7.5
   international_phone_input: ^1.0.4
   localstorage:
   mobx: ^1.1.1
@@ -42,7 +42,6 @@ dependencies:
   multi_select_flutter: ^3.1.8
   animated_splash_screen: ^1.0.1+2
   lottie: ^0.7.0+1
-  change_app_package_name: ^0.1.2
   datetime_picker_formfield: ^1.0.0
   country_list_pick: ^1.0.1+3
 

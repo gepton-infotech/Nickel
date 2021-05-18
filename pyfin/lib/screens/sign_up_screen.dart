@@ -6,7 +6,6 @@ import '../utils/constants.dart';
 import 'otp_screen.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key key}) : super(key: key);
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -30,7 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 "Please enter a 10 digit phone number.",
               ),
               actions: [
-                FlatButton(
+                TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -41,8 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       if (phoneController.text.isNotEmpty) {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                OtpPage("+91" + " " + phoneController.text.toString())));
+            builder: (context) => OtpPage("+91" + " " + _phone.toString())));
       } else {
         print("inside");
         showDialog(
@@ -54,7 +52,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   "Please enter a phone number.",
                 ),
                 actions: [
-                  FlatButton(
+                  TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -186,12 +184,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           constraints: const BoxConstraints(maxWidth: 500),
-                          child: RaisedButton(
+                          child: ElevatedButton(
                             onPressed: submit,
-                            color: kBlueColor,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(14))),
+                            style: ElevatedButton.styleFrom(
+                              primary: kBlueColor,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(14))),
+                            ),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8, horizontal: 8),

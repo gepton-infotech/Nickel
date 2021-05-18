@@ -91,31 +91,25 @@ class _AddInfoState extends State<AddInfo> {
 
   getProfile(_phone) {
     Contact contact;
-    crudmethods.getdata(_phone).then((result) {
-      print(result);
-      // contact = Contact.fromDocument(result);
+    FirebaseFirestore.instance.collection("students").doc(_phone).get().then((result) {
       if (result != null) {
-        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-        print(result);
-        for (final category in result.docs) {
-          _fnController.text = category.data()['firstName'];
-          _lnController.text = category.data()['lastName'];
+          _fnController.text = result.data()['firstName'];
+          _lnController.text = result.data()['lastName'];
 
-          _phoneController.text = category.data()['phone'];
-          _eController.text = category.data()['email'];
+          _phoneController.text = result.data()['phone'];
+          _eController.text = result.data()['email'];
         }
-      }
 
       setState(() {
         _firstName = _fnController.text;
         _lastName = _lnController.text;
         _email = _eController.text;
-        // _photoUrl = contact.photoUrl;
-        //_photoCover = contact.photoCover;
+        _photoUrl = contact.photoUrl;
+        _photoCover = contact.photoCover;
         _phone = _phoneController.text;
-//_courses = contact.courses;
-        // _examDate = contact.courseExamDate;
-        //_country = contact.country;
+        _courses = contact.courses;
+        _examDate = contact.courseExamDate;
+        _country = contact.country;
         print(_examDate);
 
         // var i = 0;

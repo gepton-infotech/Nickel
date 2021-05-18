@@ -11,7 +11,6 @@ import '../utils/constants.dart';
 import 'info.dart';
 
 class OtpPage extends StatefulWidget {
-  //const OtpPage({Key key}) : super(key: key);
   final String _phone;
   OtpPage(this._phone);
   @override
@@ -157,7 +156,7 @@ class _OtpPageState extends State<OtpPage> {
                     margin: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     constraints: const BoxConstraints(maxWidth: 500),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: () async {
                         try {
                           final AuthCredential credential =
@@ -217,9 +216,12 @@ class _OtpPageState extends State<OtpPage> {
 
                       //  loginStore.validateOtpAndLogin(context, text);
                       ,
-                      color: kBlueColor,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(14))),
+                      style: ElevatedButton.styleFrom(
+                        primary: kBlueColor,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(14))),
+                      ),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 8),
