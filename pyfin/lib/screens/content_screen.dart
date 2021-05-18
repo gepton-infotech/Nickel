@@ -50,7 +50,7 @@ class _ContentScreenState extends State<ContentScreen> {
                             height: 1,
                             width: 1,
                           )
-                        : RaisedButton(
+                        : ElevatedButton(
                             onPressed: () {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -61,10 +61,12 @@ class _ContentScreenState extends State<ContentScreen> {
                                         widget._length)),
                               );
                             },
-                            color: kGreenColor,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(14))),
+                            style: ElevatedButton.styleFrom(
+                              primary: kGreenColor,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(14))),
+                            ),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 2, horizontal: 2),
@@ -105,7 +107,7 @@ class _ContentScreenState extends State<ContentScreen> {
                               height: 1,
                               width: 1,
                             )
-                          : RaisedButton(
+                          : ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
@@ -116,10 +118,12 @@ class _ContentScreenState extends State<ContentScreen> {
                                           widget._length)),
                                 );
                               },
-                              color: kGreenColor,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(14))),
+                              style: ElevatedButton.styleFrom(
+                                primary: kGreenColor,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(14))),
+                              ),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 2, horizontal: 2),

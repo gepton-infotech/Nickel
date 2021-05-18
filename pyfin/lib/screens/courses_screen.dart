@@ -185,7 +185,12 @@ class _CoursesScreenState extends State<CoursesScreen> {
 
   Widget _enroll(int index, String name) {
     if (!enrolled.contains(name)) {
-      return RaisedButton(
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: kBlueColor,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(14))),
+        ),
         onPressed: () {
           //print("in");
           setState(() {
@@ -202,9 +207,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
           updateProfile();
           addStringToSF();
         },
-        color: kBlueColor,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(14))),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
           child: Row(
