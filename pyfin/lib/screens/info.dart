@@ -36,7 +36,7 @@ class _AddInfoState extends State<AddInfo> {
 
   bool isloading = false;
   bool emailValid = true;
-  // List<dynamic> demo = ['upsc', 'neet', 'jee'];
+  List<dynamic> demo = ['upsc', 'neet', 'jee'];
   // bool pressed = true;
 
   List _courses;
@@ -212,7 +212,7 @@ class _AddInfoState extends State<AddInfo> {
                   "Please enter a valid email.",
                 ),
                 actions: [
-                  FlatButton(
+                  TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -229,7 +229,7 @@ class _AddInfoState extends State<AddInfo> {
               title: Text('Attention!'),
               content: Text('All fields are required'),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
